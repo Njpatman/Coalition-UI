@@ -70,16 +70,16 @@ class CSI_CharacterComponent : ScriptComponent
 		
 		GetGame().GetCallqueue().Remove(WaitUntilWeSetDefaults);
 		
-		if ((m_aUnitPrefabColorTeams.IsEmpty() && m_aUnitPrefabOverrideIcons.IsEmpty()) || (!m_bOverrideOnRespawn && (!authorityComponent.ReturnLocalPlayerMapValue(groupID, playerID, "CT").IsEmpty() || !authorityComponent.ReturnLocalPlayerMapValue(groupID, playerID, "OI").IsEmpty())))
+		if (((m_aUnitPrefabColorTeams && m_aUnitPrefabColorTeams.IsEmpty()) && (m_aUnitPrefabOverrideIcons && m_aUnitPrefabOverrideIcons.IsEmpty())) || (!m_bOverrideOnRespawn && (!authorityComponent.ReturnLocalPlayerMapValue(groupID, playerID, "CT").IsEmpty() || !authorityComponent.ReturnLocalPlayerMapValue(groupID, playerID, "OI").IsEmpty())))
 			return;
 
 		string colorTeam;
 		string overrideIcon;
 			
-		if((m_aUnitPrefabColorTeams.Count() - 1) >= m_iUnitPrefabIndex)
+		if(m_aUnitPrefabColorTeams && ((m_aUnitPrefabColorTeams.Count() - 1) >= m_iUnitPrefabIndex))
 			colorTeam = m_aUnitPrefabColorTeams.Get(m_iUnitPrefabIndex);
 			
-		if((m_aUnitPrefabOverrideIcons.Count() - 1) >= m_iUnitPrefabIndex)
+		if(m_aUnitPrefabOverrideIcons && ((m_aUnitPrefabOverrideIcons.Count() - 1) >= m_iUnitPrefabIndex))
 			overrideIcon = m_aUnitPrefabOverrideIcons.Get(m_iUnitPrefabIndex);
 			
 		if (!colorTeam.IsEmpty())
