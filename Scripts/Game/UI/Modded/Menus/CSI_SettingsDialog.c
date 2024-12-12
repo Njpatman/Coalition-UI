@@ -629,5 +629,5 @@ class CSI_SettingsDialog : ChimeraMenuBase
 		GetGame().GetInputManager().RemoveActionListener("MenuBack", EActionTrigger.DOWN, OnMenuBack);
 		GetGame().GetInputManager().RemoveActionListener("MenuSelectHold", EActionTrigger.DOWN, ApplySettings);
 		GetGame().GetMenuManager().CloseAllMenus();
-	}
+	}	
 }

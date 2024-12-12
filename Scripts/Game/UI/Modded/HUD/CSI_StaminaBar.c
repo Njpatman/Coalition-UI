@@ -83,7 +83,7 @@ class CSI_StaminaBar : SCR_InfoDisplay
 	//------------------------------------------------------------------------------------------------
 	void OnStaminaChange(float stamina)
 	{
-		m_wStamBar.SetCurrent(stamina);
+		m_wStamBar.SetCurrent(stamina); 
 
 		// Color
 		switch (true)

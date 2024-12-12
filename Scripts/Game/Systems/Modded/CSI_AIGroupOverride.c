@@ -10,10 +10,8 @@ modded class SCR_AIGroup : ChimeraAIGroup
 	{	
 		if (!GetGame().GetAIWorld().CanLimitedAIBeAdded())
 		{
-			if (isLast) 
-			{
+			if (isLast)
 				Event_OnInit.Invoke(this);
-			};
 			
 			//Event_OnLastGroupMemberSpawned.Invoke(this);
 			
@@ -78,16 +76,17 @@ modded class SCR_AIGroup : ChimeraAIGroup
 		
 		spawnParams.Transform[3] = pos;
 		
-		IEntity member = GetGame().SpawnEntityPrefab(res, true, world, spawnParams);
-	
-		if(!SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning())
-			CSI_CharacterComponent.Cast(member.FindComponent(CSI_CharacterComponent)).SetDefaults(index, m_aUnitPrefabColorTeams, m_aUnitPrefabOverrideIcons);
-		
+		IEntity member = GetGame().SpawnEntityPrefabEx(res, true, world, spawnParams);
 		if (!member)
 			return true;
 		
+
+		if(!SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning())
+			CSI_CharacterComponent.Cast(member.FindComponent(CSI_CharacterComponent)).SetDefaults(index, m_aUnitPrefabColorTeams, m_aUnitPrefabOverrideIcons);
+		
 		// Move in to vehicle 
 		SCR_EditableEntityComponent editableEntity = SCR_EditableEntityComponent.Cast(member.FindComponent(SCR_EditableEntityComponent));
+		
 		
 		if (editMode)
 			m_aSceneGroupUnitInstances.Insert(member);
@@ -103,10 +102,8 @@ modded class SCR_AIGroup : ChimeraAIGroup
 		if (factionAffiliation)
 			factionAffiliation.SetAffiliatedFactionByKey(m_faction);
 	
-		if (isLast) 
-		{
+		if (isLast)
 			Event_OnInit.Invoke(this);
-		};
 		return true;
 	}
 };
